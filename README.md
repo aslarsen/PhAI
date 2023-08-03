@@ -1,1 +1,1 @@
-# PhAI-training
+# Training code for the PhAI neural network
