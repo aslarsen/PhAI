@@ -34,16 +34,16 @@ def check_sample(data_elements, data_spacegroups, data_volumes, data_lattice, al
     N = 0
     for i in range(0, sample_check_nr):
         if (data_spacegroups[i] == allowed_spacegroups).any() == True:
-            if data_volumes[i] > min_volume and data_volumes[i] < max_volume:
-                a, b, c, alpha, beta, gamma = get_unit_cell_parameters(data_lattice[i][0], data_lattice[i][1], data_lattice[i][2])
-                if a < max_length and b < max_length and c < max_length:
-                    if check_elements(data_elements[i], allowed_elements) == True:
-                        #print (data_elements[i])
-                        if (found_nr + N) >= max_datasamples:
-                            break
-                        else:
-                            good_samples[N] = i
-                            N += 1
+            #if data_volumes[i] > min_volume and data_volumes[i] < max_volume:
+            a, b, c, alpha, beta, gamma = get_unit_cell_parameters(data_lattice[i][0], data_lattice[i][1], data_lattice[i][2])
+            if a < max_length and b < max_length and c < max_length:
+                if check_elements(data_elements[i], allowed_elements) == True:
+                    #print (data_elements[i])
+                    if (found_nr + N) >= max_datasamples:
+                        break
+                    else:
+                        good_samples[N] = i
+                        N += 1
     good_samples = good_samples[0:N]
     return good_samples, N
 
